@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -23,6 +24,8 @@ public class EnchantmentLock extends JavaPlugin {
     public boolean block_grindstone;
     public boolean block_smithing;
     public boolean block_name_change;
+    public boolean enable_item_whitelist;
+    public List<String> item_whitelist;
     public ItemManager itemManager;
     public MessageManager messageManager;
     private Logger logger;
@@ -35,9 +38,9 @@ public class EnchantmentLock extends JavaPlugin {
 
         FileConfiguration configuration = getConfig();
         logger = getLogger();
-        if (configuration.getInt("config_version") != 1) {
+        if (configuration.getInt("config_version") != 2) {
             logger.severe("Invalid config.yml detected! (Is it outdated?)");
-            logger.severe("Please delete the current file and restart the server.");
+            logger.severe("Please delete/rename the current file and restart the server.");
         }
 
         block_enchanting_table = configuration.getBoolean("block_enchanting_table");
@@ -52,6 +55,11 @@ public class EnchantmentLock extends JavaPlugin {
         if(block_grindstone) {logger.info("block_grindstone: true");};
         block_smithing = configuration.getBoolean("block_smithing");
         if(block_smithing) {logger.info("block_smithing: true");};
+        enable_item_whitelist = configuration.getBoolean("enable_item_whitelist");
+        if(enable_item_whitelist) {
+            logger.info("enable_item_whitelist: true");
+            item_whitelist = configuration.getStringList("item_whitelist");
+        }
 
         itemManager = new ItemManager(this);
         messageManager = new MessageManager(this);

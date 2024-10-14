@@ -40,7 +40,14 @@ block_grindstone: true
 # Prevent players from upgrading locked items to netherite with a smithing table.
 block_smithing: true
 
+# Allow changes to whitelisted items
+enable_item_whitelist: false
+
+# Whitelisted Items (namespaced)
+item_whitelist:
+  - minecraft:name_tag
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 #                  Do not change the value below.                 #
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-config_version: 1
+config_version: 2
