@@ -5,7 +5,8 @@ description: ${project.description}
 authors:
   - Newt
   - William278
+  - brothanb
 main: me.newt.enchantmentlock.EnchantmentLock
 website: https://github.com/JustDJplease/EnchantmentLock
 
-api-version: 1.20.6
+api-version: 1.21.1

@@ -108,6 +108,16 @@ public class BlockAnvil implements Listener {
 
         if (item == null) return;
         if (result == null) return;
+        if(enchantmentLock.enable_item_whitelist) {
+            String name;
+            name = item.getType().getKey().asString();
+            logger.info("itemKey   = " + name);
+
+            for (String w : enchantmentLock.item_whitelist) {
+                if(w.equals(name)) return;
+            }
+        }
+
         if (enchantmentLock.itemManager.isLockedItem(item)) involvesLockedItem = true;
         if (enchantmentLock.itemManager.isLockedItem(result)) involvesLockedItem = true;
 
