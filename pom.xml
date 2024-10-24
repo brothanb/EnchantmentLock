@@ -6,7 +6,7 @@
 
     <groupId>me.newt</groupId>
     <artifactId>EnchantmentLock</artifactId>
-    <version>2.3-snapshot</version>
+    <version>2.3</version>
     <description>Prevent enchantments on items from being changed by players.</description>
 
         <repositories>
