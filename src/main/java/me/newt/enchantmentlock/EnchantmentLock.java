@@ -24,6 +24,7 @@ public class EnchantmentLock extends JavaPlugin {
     public boolean block_grindstone;
     public boolean block_smithing;
     public boolean block_name_change;
+    public boolean creative_ops_override;
     public boolean enable_item_whitelist;
     public List<String> item_whitelist;
     public ItemManager itemManager;
@@ -38,7 +39,7 @@ public class EnchantmentLock extends JavaPlugin {
 
         FileConfiguration configuration = getConfig();
         logger = getLogger();
-        if (configuration.getInt("config_version") != 2) {
+        if (configuration.getInt("config_version") != 3) {
             logger.severe("Invalid config.yml detected! (Is it outdated?)");
             logger.severe("Please delete/rename the current file and restart the server.");
         }
@@ -55,6 +56,8 @@ public class EnchantmentLock extends JavaPlugin {
         if(block_grindstone) {logger.info("block_grindstone: true");};
         block_smithing = configuration.getBoolean("block_smithing");
         if(block_smithing) {logger.info("block_smithing: true");};
+        creative_ops_override = configuration.getBoolean("creative_ops_override");
+        if(creative_ops_override) {logger.info("creative_ops_override: true");};
         enable_item_whitelist = configuration.getBoolean("enable_item_whitelist");
         if(enable_item_whitelist) {
             logger.info("enable_item_whitelist: true");

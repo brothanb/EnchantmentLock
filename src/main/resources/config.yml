@@ -47,7 +47,10 @@ enable_item_whitelist: false
 item_whitelist:
   - minecraft:name_tag
 
+# Allow Ops in Creative Ops to bypass blocks
+creative_ops_override: false
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 #                  Do not change the value below.                 #
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-config_version: 2
+config_version: 3

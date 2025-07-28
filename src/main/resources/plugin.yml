@@ -9,4 +9,4 @@ authors:
 main: me.newt.enchantmentlock.EnchantmentLock
 website: https://github.com/JustDJplease/EnchantmentLock
 
-api-version: 1.21.1
+api-version: '1.21.8'
