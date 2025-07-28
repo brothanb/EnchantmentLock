@@ -6,7 +6,7 @@
 
     <groupId>me.newt</groupId>
     <artifactId>EnchantmentLock</artifactId>
-    <version>2.3</version>
+    <version>2.4</version>
     <description>Prevent enchantments on items from being changed by players.</description>
 
         <repositories>
@@ -22,7 +22,7 @@
             <dependency>
                 <groupId>io.papermc.paper</groupId>
                 <artifactId>paper-api</artifactId>
-                <version>1.21.1-R0.1-SNAPSHOT</version>
+                <version>1.21.8-R0.1-SNAPSHOT</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
@@ -60,7 +60,7 @@
                     <configuration>
                         <archive>
                             <manifestEntries>
-                                <paperweight-mappings-namespace>spigot</paperweight-mappings-namespace>
+                                <paperweight-mappings-namespace>mojang</paperweight-mappings-namespace>
                             </manifestEntries>
                         </archive>
                     </configuration>

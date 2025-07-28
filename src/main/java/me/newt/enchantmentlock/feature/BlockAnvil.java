@@ -2,6 +2,7 @@ package me.newt.enchantmentlock.feature;
 
 import me.newt.enchantmentlock.EnchantmentLock;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -88,10 +89,16 @@ public class BlockAnvil implements Listener {
         HumanEntity human = event.getWhoClicked();
         if (!(human instanceof Player)) return;
 
+        if( enchantmentLock.creative_ops_override &&
+                (human.getGameMode() == GameMode.CREATIVE) &&
+                (human.isOp())) {
+            return;
+        }
+
         Player player = (Player) human;
         Inventory inventory = event.getClickedInventory();
         if (!(inventory instanceof AnvilInventory)) return;
-        
+
         InventoryView inventoryView = event.getView();
         int slot = event.getRawSlot();
         if (slot != inventoryView.convertSlot(slot)) return;
@@ -111,7 +118,7 @@ public class BlockAnvil implements Listener {
         if(enchantmentLock.enable_item_whitelist) {
             String name;
             name = item.getType().getKey().asString();
-            logger.info("itemKey   = " + name);
+            //logger.info("itemKey   = " + name);
 
             for (String w : enchantmentLock.item_whitelist) {
                 if(w.equals(name)) return;

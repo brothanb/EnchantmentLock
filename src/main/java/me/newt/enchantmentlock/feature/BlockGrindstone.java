@@ -1,6 +1,7 @@
 package me.newt.enchantmentlock.feature;
 
 import me.newt.enchantmentlock.EnchantmentLock;
+import org.bukkit.GameMode;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -35,6 +36,12 @@ public class BlockGrindstone implements Listener {
 	public void onInventoryClick(InventoryClickEvent event) {
 		HumanEntity human = event.getWhoClicked();
 		if (!(human instanceof Player))	return;
+
+		if( enchantmentLock.creative_ops_override &&
+				(human.getGameMode() == GameMode.CREATIVE) &&
+				human.isOp() ) {
+			return;
+		}
 
 		Player player = (Player) human;
 		Inventory inventory = event.getClickedInventory();

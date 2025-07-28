@@ -1,6 +1,7 @@
 package me.newt.enchantmentlock.feature;
 
 import me.newt.enchantmentlock.EnchantmentLock;
+import org.bukkit.GameMode;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -37,6 +38,13 @@ public class BlockSmithing implements Listener {
         if (!(human instanceof Player)) return;
 
         Player player = (Player) human;
+
+        if( enchantmentLock.creative_ops_override &&
+                (human.getGameMode() == GameMode.CREATIVE) &&
+                (human.isOp())) {
+            return;
+        }
+
         Inventory inventory = event.getClickedInventory();
         if (!(inventory instanceof SmithingInventory)) return;
 

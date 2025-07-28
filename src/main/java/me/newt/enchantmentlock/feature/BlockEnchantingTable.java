@@ -1,6 +1,8 @@
 package me.newt.enchantmentlock.feature;
 
 import me.newt.enchantmentlock.EnchantmentLock;
+import org.bukkit.GameMode;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,6 +38,15 @@ public class BlockEnchantingTable implements Listener {
 	 */
 	@EventHandler
 	public void onEnchantmentTable(PrepareItemEnchantEvent event) {
+
+		Player player = event.getEnchanter();
+
+		if( (enchantmentLock.creative_ops_override) &&
+				(player.getGameMode() == GameMode.CREATIVE) &&
+				player.isOp() ) {
+			return;
+		}
+
 		ItemStack item = event.getItem();
 		if (!enchantmentLock.itemManager.isLockedItem(item)) {
 			return;
@@ -43,7 +54,6 @@ public class BlockEnchantingTable implements Listener {
 
 		event.setCancelled(true);
 
-		Player player = event.getEnchanter();
 		UUID uuid = player.getUniqueId();
 
 		// This event is called multiple times for the same enchantment.
